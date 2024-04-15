@@ -1,0 +1,33 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.1.9'
+	id 'io.spring.dependency-management' version '1.1.4'
+}
+
+group = 'hello'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	sourceCompatibility = '17'
+}
+
+repositories {
+	mavenCentral() //어디에서 아래의 dependencies 즉, 라이브러리를 다운받을지 설정
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	//implementation 'org.springframework.boot:spring-boot-starter-jdbc' // java는 데이터베이스를 사용하려면 반드시 jdbc가 필요
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa' // jpa 사용을 위한 코드(jdbc가 포함됨)
+	runtimeOnly 'com.h2database:h2' // DB랑 붙을 때 DB가 제공하는 클라이언트
+	testImplementation 'org.springframework.boot:spring-boot-starter-test' // 기본으로 들어가는 test유닛 (JUint 5기본)
+}
+
+tasks.named('bootBuildImage') {
+	builder = 'paketobuildpacks/builder-jammy-base:latest'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
