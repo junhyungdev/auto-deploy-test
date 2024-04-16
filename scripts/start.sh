@@ -1,5 +1,5 @@
 ROOT_PATH="/home/ubuntu/spring-github-action"
-JAR="$ROOT_PATH/application.jar"
+JAR="$ROOT_PATH/build/libs/hello-spring-0.0.1-SNAPSHOT.jar"
 
 APP_LOG="$ROOT_PATH/application.log"
 ERROR_LOG="$ROOT_PATH/error.log"
