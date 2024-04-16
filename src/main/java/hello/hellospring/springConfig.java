@@ -40,14 +40,14 @@ public class springConfig {
         return new MemberService(memberRepository); //스프링 빈에 등록되어 있는 memberRepository를 memberService를 넣어준다.
     }
 
-//    @Bean
-//    public MemberRepository memberRepository(){
-//
-////        return new MemoryMemberRepository();
-////        return new JdbcMemberRepository(dataSource);
-////        return new JdbcTemplateMemberRepository(dataSource);
-////        return new JpaMemberRepository(em);
-//    }
+    @Bean
+    public MemberRepository memberRepository(){
+
+        return new MemoryMemberRepository();
+//        return new JdbcMemberRepository(dataSource);
+//        return new JdbcTemplateMemberRepository(dataSource);
+//        return new JpaMemberRepository(em);
+    }
 
 //    @Bean
 //    public TimeTraceAop timeTraceAop(){
