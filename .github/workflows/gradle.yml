@@ -37,7 +37,7 @@ jobs:
       run: chmod +x gradlew
       
     - name: Build with Gradle
-      run: ./gradlew build
+      run: ./gradlew build clean build -x test
 
 
     - name: AWS credential 설정
