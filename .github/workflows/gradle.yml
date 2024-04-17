@@ -35,7 +35,7 @@ jobs: # job 시작 명시(모든 job의 묶음)
 
       # gradlew 실행 관한 부여
       - name: Grant execute permission for gradlew
-        run: chmod +x gradlew # run 키워드는 job에게 runner위에서 실행하도록 명령
+        run: chmod +x ./gradlew # run 키워드는 job에게 runner위에서 실행하도록 명령
 
  
      # 임시 추가
