@@ -32,6 +32,11 @@ jobs: # job 시작 명시(모든 job의 묶음)
         with:
           java-version: '17'
           distribution: 'temurin' # eplipse의 open jdk인 temurin 사용.(oracle jdk를 사용하지 않아도 괜찮나?)
+
+      # gradlew 실행 관한 부여
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew # run 키워드는 job에게 runner위에서 실행하도록 명령
+
  
      # 임시 추가
       - name: Setup Gradle
@@ -41,10 +46,6 @@ jobs: # job 시작 명시(모든 job의 묶음)
         run: ./gradlew build
 
 
-
-      # gradlew 실행 관한 부여
-      - name: Grant execute permission for gradlew
-        run: chmod +x gradlew # run 키워드는 job에게 runner위에서 실행하도록 명령
 
       # 임시 주석
       # - name: Build with Gradle
