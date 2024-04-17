@@ -11,7 +11,7 @@ public class HelloController {
     @GetMapping("hello")
     public String hello(Model model)
     {
-        model.addAttribute("data","this is ci/cd");
+        model.addAttribute("data","this is ci/cd2");
         return "hello"; // resources/templates 하위의 hello를 찾아 model을 hello.html에 넘겨서 랜더링 한다.
     }
 
@@ -47,5 +47,4 @@ public class HelloController {
             this.name = name;
         }
     }
-
 }
