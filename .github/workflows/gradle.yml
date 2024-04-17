@@ -38,9 +38,9 @@ jobs: # job 시작 명시(모든 job의 묶음)
         run: chmod +x gradlew # run 키워드는 job에게 runner위에서 실행하도록 명령
 
  
-     # # 임시 추가
-     #  - name: Setup Gradle
-     #    uses: gradle/actions/setup-gradle@417ae3ccd767c252f5661f1ace9f835f9654f2b5 # v3.1.0
+     # 임시 추가
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@417ae3ccd767c252f5661f1ace9f835f9654f2b5 # v3.1.0
   
       - name: Build with Gradle Wrapper
         run: ./gradlew build
