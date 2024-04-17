@@ -26,24 +26,31 @@ jobs: # job 시작 명시(모든 job의 묶음)
       contents: read
 
     steps: # step 시작 명시(모든 step의 묶음)
-      - uses: actions/checkout@v4 # use 키워드는 actions/checkout의 v4버전을 실행할 것을 의미. repository 코드를 runner에 다운하고 브랜치 전환하는 역할 
-      - name: Set up JDK 17
-        uses: actions/setup-java@v4
+      - uses: actions/checkout@v4 # use 키워드는 actions/checkout의 v4버전을 실행할 것을 의미. repository 코드를 runner에 다운하고 브랜치 전환하는 역할. workflow가 repository 코드를 사용할때 사용해야한다.
+      - name: Set up JDK 17 # java17 버전 설치
+        uses: actions/setup-java@v4 # jdk를 다운 받고 캐싱해주는 Action
         with:
           java-version: '17'
-          distribution: 'temurin'
+          distribution: 'temurin' # eplipse의 open jdk인 temurin 사용.(oracle jdk를 사용하지 않아도 괜찮나?)
+ 
+     # 임시 추가
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@417ae3ccd767c252f5661f1ace9f835f9654f2b5 # v3.1.0
+  
+      - name: Build with Gradle Wrapper
+        run: ./gradlew build
+
+
 
       # gradlew 실행 관한 부여
       - name: Grant execute permission for gradlew
-        run: chmod +x gradlew
+        run: chmod +x gradlew # run 키워드는 job에게 runner위에서 실행하도록 명령
 
-      # 빌드
+      # 임시 주석
       # - name: Build with Gradle
-      #   run: ./gradlew build clean build -x test
-      - name: Build with Gradle
-        uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
-        with:
-          arguments: build
+      #   uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
+      #   with:
+      #     arguments: build
 
 
       - name: AWS credential 설정
